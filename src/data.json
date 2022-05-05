@@ -1,0 +1,99 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "title": "lighting"
+    },
+    {
+      "id" : "2",
+      "title": "furniture"
+    },
+    {
+      "id" : "3",
+      "title": "decor"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "image_1": "images/products/product-7-1.jpg",
+      "image_2": "images/products/product-7-2.jpg",
+      "title": "Petite Table Lamp",
+      "category": "lighting",
+      "price": 499.00
+    },
+    {
+      "id": "2",
+      "image_1": "images/products/product-8-1.jpg",
+      "image_2": "images/products/product-8-2.jpg",
+      "title": "Madra Log Holder",
+      "category": "decor",
+      "price": 401.00
+    },
+    {
+      "id": "3",
+      "image_1": "images/products/product-14-1.jpg",
+      "image_2": "images/products/product-14-2.jpg",
+      "title": "Cushion Set 3 Pieces",
+      "category": "decor",
+      "price": 199.00
+    },
+    {
+      "id": "4",
+      "image_1": "images/products/product-11-1.jpg",
+      "image_2": "images/products/product-11-2.jpg",
+      "title": "Original Outdoor Beanbag",
+      "category": "decor",
+      "price": 259.00
+    },
+    {
+      "id": "5",
+      "image_1": "images/products/product-15-1.jpg",
+      "image_2": "images/products/product-15-2.jpg",
+      "title": "Cushion Set 3 Pieces",
+      "category": "decor",
+      "price": 199.00
+    },
+    {
+      "id": "6",
+      "image_1": "images/products/product-7-1.jpg",
+      "image_2": "images/products/product-7-2.jpg",
+      "title": "Petite Table Lamp",
+      "category": "lighting",
+      "price": 401.00
+    },
+    {
+      "id": "7",
+      "image_1": "images/products/product-10-1.jpg",
+      "image_2": "images/products/product-10-2.jpg",
+      "title": "Carronade Large Suspension Lamp",
+      "category": "lighting",
+      "price": 401.00
+    },
+    {
+      "id": "8",
+      "image_1": "images/products/product-16-1.jpg",
+      "image_2": "images/products/product-16-2.jpg",
+      "title": "Carronade Table Lamp",
+      "category": "lighting",
+      "price": 49.9
+    },
+    {
+      "id": "9",
+      "image_1": "images/products/product-9-1.jpg",
+      "image_2": "images/products/product-9-2.jpg",
+      "title": "Garden Armchair",
+      "category": "furniture",
+      "price": 94.00,
+      "old_price" : 94.00 
+    },
+    {
+      "id": "10",
+      "image_1": "images/products/product-12-1.jpg",
+      "image_2": "images/products/product-12-2.jpg",
+      "title": "Seater",
+      "category": "furniture",
+      "price": 3107.00
+    }
+  ]
+}
