@@ -1,16 +1,17 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faStar, faStarHalfStroke, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { addToCart } from "../../app/actions/cartActions";
 import ProductGallary from "./ProductGallary";
 import styled from 'styled-components';
 
 const Product = (props) => {
     const [quantity, setQuantity] = useState(1);
+    const totalStars = 5;
 
     const handleDecrementQuantity = () => {
-        if(quantity > 1 ){
+        if (quantity > 1) {
             setQuantity(quantity - 1)
         }
     }
@@ -22,51 +23,46 @@ const Product = (props) => {
 
     return (
         <Container className="product product-single row mb-2 h-100">
-            <div class="col-12 col-sm-12 col-md-6 col">
-                <div class="product-gallery pg-vertical product-gallery-sticky h-100">
-                    <ProductGallary/>
+            <div className="col-12 col-sm-12 col-md-6 col pb-4 pb-sm-4 pb-md-0 mb-4 mb-sm-4 mb-md-0">
+                <div className="product-gallery pg-vertical product-gallery-sticky h-100">
+                    <ProductGallary photos={props.product.photos} />
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-6 details-col">
-                <ProductDetails class="product-details">
-                    <h1 class="product-name">{props.product.name}</h1>
-                    <div class="ratings-container">
-                        <div class="ratings">
-                            <div class="ratings-val">
-                            <span>
-                                <FontAwesomeIcon className="rate-start" icon={faStar} />
-                            </span>
-                            <span>
-                                <FontAwesomeIcon className="rate-start" icon={faStar} />
-                            </span>
-                            <span>
-                                <FontAwesomeIcon className="rate-start" icon={faStar} />
-                            </span>
-                            <span>
-                                <FontAwesomeIcon className="rate-start" icon={faStar} />
-                            </span>
-                            <span>
-                                <FontAwesomeIcon className="rate-start" icon={faStarHalf} />
-                            </span>
+            <div className="col-12 col-sm-12 col-md-6 details-col">
+                <ProductDetails className="product-details">
+                    <h1 className="product-name">{props.product.name}</h1>
+                    <div className="ratings-container">
+                        <div className="ratings">
+                            <div className="ratings-val">
+                                {[...new Array(totalStars)].map((arr, index) => {
+                                    return index < props.product.rate
+                                        ? <span>
+                                            <FontAwesomeIcon className='rate-start text-warning' icon={props.product.rate <= 0.5 + index ? faStarHalfStroke : props.product.rate <= 1 + index ? faStar : faStar} />
+                                        </span>
+                                        : <span>
+                                            <FontAwesomeIcon className='rate-start' icon={faStar} />
+                                        </span>;
+                                })}
+
                             </div>
                         </div>
-                        <span class="ratings-text mt-0">
-                            ( 2 Reviews )
+                        <span className="ratings-text mt-0">
+                            ( {props.product.reviewsCount} Reviews )
                         </span>
                     </div>
-                    <div class="product-price">${props.product.price}</div>
+                    <div className="product-price">${props.product.price}</div>
 
-                    <div class="product-content">
+                    <div className="product-content">
                         <p>
                             ${props.product.description}
                         </p>
                     </div>
                 </ProductDetails>
-                <div class="details-filter-row details-row-size">
-                    <div class="product-details-quantity">
+                <div className="details-filter-row details-row-size">
+                    <div className="product-details-quantity">
 
                         <div className="input-group  input-spinner d-flex align-items-center">
-                        <span >Quantity: </span>
+                            <span className="quant">Quantity: </span>
 
                             <Quantity className="cart-product-quantity position-relative mx-3">
                                 <div className="input-group-prepend">
@@ -81,13 +77,14 @@ const Product = (props) => {
                                     </button>
                                 </div>
                             </Quantity>
-                            
+
                         </div>
                         <div className="product-action">
-                                <button onClick={() => { addToCartBtnClicked(props.product) }} className="btn-product btn-cart">
-                                    <span>ADD TO CART</span>
-                                </button>
-                            </div>
+                            <button id="addToCartBtn" onClick={() => { addToCartBtnClicked(props.product) }} className="btn-product btn-cart">
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                                <span className="px-2">ADD TO CART</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,17 +99,18 @@ export default connect(
 )(Product);
 
 const Container = styled.div`
-.ReactModal__Content {
-    position: absolute;
-    left: 2.5rem;
-    right: 2.5rem;
-    top: 2.5rem;
-    bottom: 2.5rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px 0 rgba(0,0,97,0.5);
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
+.quant {
+    display: inline-block;
+    font-size: 14px;
+    width: 67px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #666;
+}
+
+.input-spinner{
+    margin-bottom: 16px;
 }
 
 .details-col{
@@ -122,6 +120,9 @@ const Container = styled.div`
 }
     .col{
         height: 100%;
+        @media screen and (max-width: 991px){
+            height: fit-content;
+        }
     }
 
     .btn-cart {
@@ -140,6 +141,11 @@ const Container = styled.div`
         font-size: 14px;
         line-height: 1;
         transition: all .35s ease;
+        &:hover{
+            color: #fff;
+            border-color: #c96;
+            background-color: #c96;
+        }
     }
 
 `
@@ -191,8 +197,7 @@ const ProductDetails = styled.div`
 
 `
 
-const Quantity =styled.div`
-margin-bottom: 14px;
+const Quantity = styled.div`
     *{
         font-size: 14px;
         font-weight: 300 !important;

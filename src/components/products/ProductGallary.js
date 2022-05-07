@@ -7,32 +7,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
-function ProductGallary() {
+function ProductGallary(props) {
     const settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         //   autoplaySpeed: 2000,
         pauseOnHover: true,
-        nextArrow: <ArrowRight />,
-        prevArrow: <ArrowLeft />
+        // nextArrow: <ArrowRight />,
+        // prevArrow: <ArrowLeft />
 
     };
 
     return (
         <Carousal className="product-slider-container h-100">
             <Slider {...settings}>
-                <Wrap className='product-slide h-100'>
-                    <img className='w-100 h-100' src='https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?cs=srgb&dl=air-jordan-design-footwear-1598505.jpg&fm=jpg' alt='badag' />
-                </Wrap>
-                <Wrap className='product-slide h-100'>
-                    <img className='w-100 h-100' src='https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?cs=srgb&dl=air-jordan-design-footwear-1598505.jpg&fm=jpg' alt='badag' />
-                </Wrap>
-                <Wrap className='product-slide h-100'>
-                    <img className='w-100 h-100' src='https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?cs=srgb&dl=air-jordan-design-footwear-1598505.jpg&fm=jpg' alt='badag' />
-                </Wrap>
+                {props.photos.map((photo, index) => (
+                    <Wrap className='product-slide' key={index}>
+                        <img className='w-100 h-100' src={photo} alt='badag' />
+                    </Wrap>
+                ))}
             </Slider>
         </Carousal>
     );
@@ -53,6 +49,11 @@ const ArrowRight = (props) => (
 );
 
 const Carousal = styled.div`
+*{
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 .slick-slider, .slick-list, .slick-track {
     height: 100%;
 }
@@ -61,7 +62,24 @@ const Carousal = styled.div`
     display: flex !important;
     justify-content: center;
     align-items: center;
+    // overflow: visible;
 }
+
+
+  .slick-dots li button {
+    &:before {
+      font-size: 10px;
+      color: rgb(150, 158, 171);
+    }
+  }
+  .slick-dots li.slick-active button {
+    &:before {
+      color: #c96;
+    }
+  }
+  button {
+    z-index: 1;
+  }
 
 
 .slick-list{
@@ -79,6 +97,8 @@ const Carousal = styled.div`
     background: #c96;
     border-radius: 0;
     border: none !important;
+    opacity: 0.8;
+    border-raduis: 50%;
 }
 
 .next{
@@ -88,9 +108,11 @@ const Carousal = styled.div`
 
 `;
 const Wrap = styled.div`
-img{
-    object-fit: cover;
-}
-
-
+    height: 450px;
+    @media screen and (max-width: 991px){
+        height: 250px;
+    }
+    img{
+        object-fit: contain;
+    }
 `;

@@ -2,7 +2,7 @@
     "products": [
       {
         "id": 1,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 1",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "50",
@@ -18,7 +18,7 @@
       },
       {
         "id": 2,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 2",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4.5",
         "reviewsCount": "28",
@@ -34,7 +34,7 @@
       },
       {
         "id": 3,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 3",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "5",
         "reviewsCount": "37",
@@ -50,7 +50,7 @@
       },
       {
         "id": 4,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 4",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3",
         "reviewsCount": "15",
@@ -66,7 +66,7 @@
       },
       {
         "id": 5,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 5",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4",
         "reviewsCount": "73",
@@ -82,7 +82,7 @@
       },
       {
         "id": 6,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 6",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "55",
@@ -98,7 +98,7 @@
       },
       {
         "id": 7,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 7",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "50",
@@ -114,7 +114,7 @@
       },
       {
         "id": 8,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 8",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4.5",
         "reviewsCount": "28",
@@ -130,7 +130,7 @@
       },
       {
         "id": 9,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 9",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "5",
         "reviewsCount": "37",
@@ -146,7 +146,7 @@
       },
       {
         "id": 10,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 10",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3",
         "reviewsCount": "15",
@@ -162,7 +162,7 @@
       },
       {
         "id": 11,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 11",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4",
         "reviewsCount": "73",
@@ -178,7 +178,7 @@
       },
       {
         "id": 12,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 12",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "55",
@@ -193,8 +193,8 @@
         ]
       },
       {
-        "id": 13,
-        "name": "Comba Leather And Suede Trainers",
+        "id": 13, 
+        "name": "Comba Leather And Suede Trainers 13",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "50",
@@ -210,7 +210,7 @@
       },
       {
         "id": 14,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 14",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4.5",
         "reviewsCount": "28",
@@ -226,7 +226,7 @@
       },
       {
         "id": 15,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 15",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "5",
         "reviewsCount": "37",
@@ -242,7 +242,7 @@
       },
       {
         "id": 16,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 16",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3",
         "reviewsCount": "15",
@@ -258,7 +258,7 @@
       },
       {
         "id": 17,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 17",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "4",
         "reviewsCount": "73",
@@ -274,7 +274,7 @@
       },
       {
         "id": 18,
-        "name": "Comba Leather And Suede Trainers",
+        "name": "Comba Leather And Suede Trainers 18",
         "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
         "rate": "3.5",
         "reviewsCount": "55",

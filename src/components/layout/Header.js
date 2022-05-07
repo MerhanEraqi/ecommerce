@@ -23,12 +23,12 @@ const Header = (props) => {
         {/* right header side */}
         <Cart className="cart-dropdown h-100 d-flex justify-content-center align-items-center">
           {/* cart icon */}
-          <CartICon type="button" class="position-relative">
+          <CartICon type="button" className="position-relative">
             <FontAwesomeIcon className="" icon={faShoppingCart} />
 
-            <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
+            <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
               {cartItems.length}
-              <span class="visually-hidden">cart count</span>
+              <span className="visually-hidden">cart count</span>
             </span>
           </CartICon>
 
@@ -120,7 +120,7 @@ const Cart = styled.div`
     position: absolute;
     left: auto;
     right: 0;
-    top:100%;
+    top:99%;
     width: 300px;
     z-index: 100;
     border: none;

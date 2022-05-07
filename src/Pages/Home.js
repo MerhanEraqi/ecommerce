@@ -15,5 +15,5 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div`
-    min-height: calc(100vh - 154px);
+    min-height: calc(100vh - 152px);
 `

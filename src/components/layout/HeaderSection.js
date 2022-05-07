@@ -4,7 +4,7 @@ const HeaderSection = (props) => {
     return (
         <Header>
             <ol className="breadcrumb container">
-                <li class="text-center w-100"><h3>{props.title}</h3></li>
+                <li className="text-center w-100"><h3>{props.title}</h3></li>
             </ol>
         </Header>
     )

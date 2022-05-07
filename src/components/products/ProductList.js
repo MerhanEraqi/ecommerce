@@ -3,18 +3,24 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { fetchProducts } from "../../app/actions/productActions";
 import { addToCart } from "../../app/actions/cartActions";
-import Filter from "./Filter";
 import Modal from "react-modal";
 import Product from "./Product";
-import ProductGallary from "./ProductGallary";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { Pagination } from "../Pagination";
+import data from '../../db.json';
+import Loader from "../Loader";
 
 class ProductList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: null,
+            currentPage: 1,
+            productsPerPage: 6,
         };
     }
+
 
     componentDidMount() {
         this.props.fetchProducts();
@@ -28,85 +34,110 @@ class ProductList extends Component {
 
 
     render() {
-        const { product } = this.state;
+        let { product } = this.state;
+        const products = this.props.products;
+        let indexOfLastPage = 0;
+        let indexOfFirstPage = 0;
+        let currentProducts = [];
+
+        const paginate = (pageNumber) => {
+            this.setState({
+                currentPage: pageNumber
+            })
+        };
+
+        if (!products || !products.length) {
+            return (
+                <Loader />
+            )
+        } else {
+            indexOfLastPage = this.state.currentPage * this.state.productsPerPage;
+            indexOfFirstPage = indexOfLastPage - this.state.productsPerPage;
+            currentProducts = products.slice(indexOfFirstPage, indexOfLastPage);
+        }
+
+
 
         return (
             <Container className="container">
-                <Filter products={this.props.products} />
+                <h2 className="title pb-3">Recent Arrivals</h2>
                 <div className="tab-content">
                     <div className="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
                         <div className="products">
-                            {!this.props.products ? (
-                                <div>Loading...</div>
-                            ) : (
-                                <div className="row justify-content-center w-100">
-                                    {this.props.products.map((product, index) => (
-                                        <ProductCard className="col-6 col-sm-6 col-md-3 col-lg-2 mx-1" key={index}>
-                                            <div className="product product-11 text-center">
-                                                <a onClick={() => this.openModal(product)}>
-                                                    <figure className="product-media">
-                                                        <a >
-                                                            <img src={product.photos[1]} alt="Product image" className="product-image" />
-                                                            <img src={product.photos[2]} alt="Product image" className="product-image-hover" />
-                                                        </a>
-                                                    </figure>
+                            <div className="row justify-content-center w-100">
+                                {currentProducts.map((product, index) => (
+                                    <ProductCard className="col-6 col-sm-6 col-md-3 col-lg-2 mx-1" key={index}>
+                                        <div className="product product-11 text-center">
+                                            <a onClick={() => this.openModal(product)}>
+                                                <figure className="product-media">
+                                                    <a >
+                                                        <img src={product.photos[1]} alt="Product image" className="product-image" />
+                                                        <img src={product.photos[2]} alt="Product image" className="product-image-hover" />
+                                                    </a>
+                                                </figure>
 
-                                                    <ProductDetails className="product-body">
-                                                        <div className="product-cat">
-                                                            {product.category}
-                                                        </div>
-                                                        <h3 className="product-title">{product.name}</h3>
-                                                        <div className="product-price">
-                                                            ${(Math.round(product.price).toFixed(2))}
-                                                        </div>
-                                                    </ProductDetails>
-                                                </a>
-                                                <div className="product-action">
-                                                    <button onClick={() => { this.props.addToCart(product) }} className="btn-product btn-cart">
-                                                        <span>add to cart</span>
-                                                    </button>
-                                                </div>
+                                                <ProductDetails className="product-body">
+                                                    <h3 className="product-title">{product.name}</h3>
+                                                    <div className="product-price">
+                                                        ${(Math.round(product.price).toFixed(2))}
+                                                    </div>
+                                                </ProductDetails>
+                                            </a>
+                                            <div className="product-action">
+                                                <button onClick={() => { this.props.addToCart(product) }} className="btn-product btn-cart mt-3">
+                                                    <span>add to cart</span>
+                                                </button>
                                             </div>
-                                        </ProductCard>
-                                    ))}
-                                </div>
-                            )}
+                                        </div>
+                                    </ProductCard>
+                                ))}
+
+                                <Pagination
+                                    currentPage={this.state.currentPage}
+                                    totalProducts={products.length}
+                                    productsPerPage={this.state.productsPerPage}
+                                    paginate={paginate}
+                                />
+                            </div>
                         </div>
                     </div>
                     <hr className="mt-1 mb-6" />
                 </div>
                 {product && (
                     <Modal ariaHideApp={false} isOpen={true} onRequestClose={this.closeModal}
-                    style={{
-                        overlay: {
-                          position: 'fixed',
-                          zIndex: 1020,
-                          top: 0,
-                          left: 0,
-                          width: '100vw',
-                          height: '100vh',
-                          background: 'rgba(255, 255, 255, 0.75)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        },
-                        content: {
-                          background: 'white',
-                          padding: '40px',
-                          width: '80%',
-                          maxWidth: 'calc(100vw - 2rem)',
-                          maxHeight: 'calc(100vh - 2rem)',
-                          overflowY: 'auto',
-                          position: 'relative',
-                          border: '1px solid #ccc',
-                          borderRadius: '0.3rem',
-                          height: '70vh',
-                          top: '0px',
-                          left: '0px'
-                        }}}>
-                        <div className="position-relative h-100">
-                            <a className="close-modal position-absolute p-4" onClick={this.closeModal}>
-                                x
+                        style={{
+                            overlay: {
+                                position: 'fixed',
+                                zIndex: 1020,
+                                top: 0,
+                                left: 0,
+                                width: '100vw',
+                                height: '100vh',
+                                background: 'rgba(255, 255, 255, 0.75)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            },
+                            content: {
+                                position: 'relative',
+                                background: 'white',
+                                padding: '10vh 40px',
+                                width: '80%',
+                                maxWidth: 'calc(100vw - 2rem)',
+                                maxHeight: 'calc(100vh - 2rem)',
+                                overflowY: 'auto',
+                                position: 'relative',
+                                border: 'none',
+                                borderRadius: '0.3rem',
+                                //   height: '80vh',
+                                top: '0px',
+                                left: '0px',
+                                boxShadow: 'rgb(0 0 0 / 69%) 8px 10px 30px -10px'
+                            }
+                        }}>
+                        <div className="h-100">
+                            <a className="btn close-modal position-absolute top-0 end-0 p-4 text-black h4" onClick={this.closeModal}>
+                                <FontAwesomeIcon icon={faClose} />
                             </a>
                             <Product className="w-100 h-100" product={product} />
                         </div>
@@ -126,10 +157,13 @@ export default connect(
 )(ProductList);
 
 const Container = styled.div`
-    .close-modal{
-        top: 0;
-        right: 0; 
-    }
+.title{
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -.03em;
+    font-weight: 400;
+  }
 `
 const ProductCard = styled.div`
     crusor: pointer;
@@ -215,7 +249,7 @@ const ProductCard = styled.div`
 const ProductDetails = styled.div`
     padding-bottom: 7rem;
     position: relative;
-    padding: 16px 20px 70px;
+    padding: 16px 20px 75px;
     transition: all .35s ease;
     background-color: #fff;
 
