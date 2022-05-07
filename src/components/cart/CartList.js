@@ -105,11 +105,11 @@ const Table = styled.table`
 
     tbody{
         border: none !important;
+        border-bottom: 0.1rem solid #ebebeb !important;        
     }
 
     th, thead th, td {
         border-top: none;
-        border-bottom: 0.1rem solid #ebebeb;        
     }
 
     @media screen and (max-width: 991px){

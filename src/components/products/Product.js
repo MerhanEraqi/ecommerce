@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faStar, faStarHalfStroke, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { addToCart } from "../../app/actions/cartActions";
@@ -18,6 +18,7 @@ const Product = (props) => {
 
     const addToCartBtnClicked = (product) => {
         props.addToCart(product, quantity);
+        props.closeModal(true)
     }
 
 
@@ -36,10 +37,10 @@ const Product = (props) => {
                             <div className="ratings-val">
                                 {[...new Array(totalStars)].map((arr, index) => {
                                     return index < props.product.rate
-                                        ? <span>
+                                        ? <span key={index}>
                                             <FontAwesomeIcon className='rate-start text-warning' icon={props.product.rate <= 0.5 + index ? faStarHalfStroke : props.product.rate <= 1 + index ? faStar : faStar} />
                                         </span>
-                                        : <span>
+                                        : <span key={index}>
                                             <FontAwesomeIcon className='rate-start' icon={faStar} />
                                         </span>;
                                 })}
@@ -70,7 +71,7 @@ const Product = (props) => {
                                         <FontAwesomeIcon className="" icon={faMinus} />
                                     </button>
                                 </div>
-                                <input type="number" className="form-control text-center" value={quantity} min="1" max="10" step="1" required />
+                                <input type="number" className="form-control text-center" value={quantity} min="1" max="10" step="1" />
                                 <div className="input-group-append">
                                     <button onClick={() => setQuantity(quantity + 1)} className="btn btn-increment btn-spinner px-3">
                                         <FontAwesomeIcon className="" icon={faPlus} />

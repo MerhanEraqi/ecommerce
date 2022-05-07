@@ -8,8 +8,8 @@ import Product from "./Product";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { Pagination } from "../Pagination";
-import data from '../../db.json';
 import Loader from "../Loader";
+import Toast from "../Toast";
 
 class ProductList extends Component {
     constructor(props) {
@@ -17,7 +17,8 @@ class ProductList extends Component {
         this.state = {
             product: null,
             currentPage: 1,
-            productsPerPage: 6,
+            productsPerPage: 5,
+            addedSuccessfully: false,
         };
     }
 
@@ -25,11 +26,32 @@ class ProductList extends Component {
     componentDidMount() {
         this.props.fetchProducts();
     }
+
     openModal = (product) => {
         this.setState({ product });
     };
-    closeModal = () => {
+
+    handleSuccessMessage = () => {
+        this.setState({
+            addedSuccessfully: true
+        })
+
+        setTimeout(() => {
+            this.setState({
+                addedSuccessfully: false
+            })
+        }, 2000);
+    }
+
+    handleAddToCartBtnClicked = (product) =>{
+        this.props.addToCart(product)
+        this.handleSuccessMessage()
+    }
+
+    closeModal = (isProductAdded) => {
         this.setState({ product: null });
+        isProductAdded = typeof isProductAdded !== 'boolean' ? false : true;
+        if(isProductAdded){this.handleSuccessMessage()};
     };
 
 
@@ -60,6 +82,7 @@ class ProductList extends Component {
 
         return (
             <Container className="container">
+                <Toast isAdded={this.state.addedSuccessfully}/>
                 <h2 className="title pb-3">Recent Arrivals</h2>
                 <div className="tab-content">
                     <div className="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
@@ -84,7 +107,7 @@ class ProductList extends Component {
                                                 </ProductDetails>
                                             </a>
                                             <div className="product-action">
-                                                <button onClick={() => { this.props.addToCart(product) }} className="btn-product btn-cart mt-3">
+                                                <button onClick={() => {this.handleAddToCartBtnClicked(product) }} className="btn-product btn-cart mt-3">
                                                     <span>add to cart</span>
                                                 </button>
                                             </div>
@@ -139,7 +162,7 @@ class ProductList extends Component {
                             <a className="btn close-modal position-absolute top-0 end-0 p-4 text-black h4" onClick={this.closeModal}>
                                 <FontAwesomeIcon icon={faClose} />
                             </a>
-                            <Product className="w-100 h-100" product={product} />
+                            <Product className="w-100 h-100" product={product}  closeModal={this.closeModal}/>
                         </div>
                     </Modal>
                 )}

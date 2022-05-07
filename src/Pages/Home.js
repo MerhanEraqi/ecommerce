@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ProductList from '../components/products/ProductList';
 import HeaderSection from '../components/layout/HeaderSection';
+import Toast from '../components/Toast';
 
 const Home = () => {
     return (
